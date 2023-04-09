@@ -36,5 +36,8 @@ public class Simulation extends Model {
 
     public void addAgent(Agent a) { agents.add(a); }
 
+    public void stats(){
+        Utilities.inform(new String[] {"# of agents: " + agents.size(), "Clock: " + clock });
+    }
 
 }
