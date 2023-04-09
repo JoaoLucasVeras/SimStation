@@ -9,7 +9,7 @@ public class SimulationFactory implements AppFactory {
 
     @Override
     public Model makeModel() {
-        return null;
+        return new Simulation();
     }
 
     @Override
@@ -34,16 +34,22 @@ public class SimulationFactory implements AppFactory {
 
     @Override
     public String getTitle() {
-        return null;
+        return "SimStation Simulation";
     }
 
     @Override
     public String[] getHelp() {
-        return new String[0];
+        return new String[] {
+            "click Start to begin a new simulation",
+            "click Suspend to temporarily pause the simulation",
+            "click Resume to continue the simlation",
+            "click Stop to terminate the simulation",
+            "click Stats to get the statistics of the simulation"
+    };
     }
 
     @Override
     public String about() {
-        return null;
+        return "Simstation made by: Joao Lucas Veras, Nick Nguyen, Kyaw Soe Han ";
     }
 }
