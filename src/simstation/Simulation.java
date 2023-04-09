@@ -1,6 +1,7 @@
 package simstation;
 
 import mvc.Model;
+
 import mvc.Utilities;
 
 import java.util.List;
@@ -29,5 +30,6 @@ public class Simulation extends Model {
     public void populate() {}
 
     public void addAgent(Agent a) { agents.add(a); }
+
 
 }
