@@ -10,7 +10,12 @@ public class Simulation extends Model {
     protected List<Agent> agents;
     protected int clock;
 
-    public void start() { for (Agent a: agents) a.start(); }
+    public void start() { for (Agent a: agents) {
+        agents.clear();
+        this.populate();
+        Thread thread = new Thread(a);
+        thread.start();
+    } }
     public void suspend() { for (Agent a: agents) a.suspend(); }
     public void resume() { for (Agent a: agents) a.resume(); }
     public void stop() { for (Agent a: agents) a.stop(); }
