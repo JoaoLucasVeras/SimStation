@@ -40,11 +40,11 @@ public class SimulationFactory implements AppFactory {
     @Override
     public String[] getHelp() {
         return new String[] {
-            "click Start to begin a new simulation",
-            "click Suspend to temporarily pause the simulation",
-            "click Resume to continue the simlation",
-            "click Stop to terminate the simulation",
-            "click Stats to get the statistics of the simulation"
+            "Start : begins a new simulation",
+            "Suspend : temporarily pause the simulation",
+            "Resume : continue the simlation",
+            "Stop : terminate the simulation",
+            "Stats : get the statistics of the simulation"
     };
     }
 

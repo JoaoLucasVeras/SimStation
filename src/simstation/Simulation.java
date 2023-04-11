@@ -4,6 +4,7 @@ import mvc.Model;
 
 import mvc.Utilities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,30 +14,37 @@ public class Simulation extends Model {
     protected List<Agent> agents;
     protected int clock;
 
-    private void startTimer(){
+    public Simulation() {
+        super();
+        agents = new ArrayList<>();
+    }
+
+    private void startTimer() {
         timer = new Timer();
         timer.scheduleAtFixedRate(new ClockUpdater(), 1000, 1000);
     }
 
-    private class ClockUpdater extends TimerTask{
+    private class ClockUpdater extends TimerTask {
         public void run(){
             clock++;
         }
     }
 
-    private void stopTimer(){
+    private void stopTimer() {
         timer.cancel();
         timer.purge();
     }
 
-    public void start() { for (Agent a: agents) {
+    public void start() {
         clock = 0;
-        startTimer();
         agents.clear();
         this.populate();
-        Thread thread = new Thread(a);
-        thread.start();
-    } }
+        startTimer();
+        for (Agent a:agents) {
+            Thread thread = new Thread(a);
+            thread.start();
+        }
+    }
     public void suspend() { stopTimer(); for (Agent a: agents) a.suspend(); }
     public void resume() { startTimer(); for (Agent a: agents) a.resume(); }
     public void stop() { stopTimer(); for (Agent a: agents) a.stop(); }
@@ -58,7 +66,10 @@ public class Simulation extends Model {
     }
     public void populate() {}
 
-    public void addAgent(Agent a) { agents.add(a); }
+    public void addAgent(Agent a) {
+        agents.add(a);
+        a.setWorld(this);
+    }
 
     public void stats(){
         Utilities.inform(new String[] {"# of agents: " + agents.size(), "Clock: " + clock });

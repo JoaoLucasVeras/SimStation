@@ -6,9 +6,7 @@ import mvc.Utilities;
 import java.awt.Color;
 import java.awt.Graphics;
 
-
-
-public abstract class Agent implements Serializable, Runnable{
+public abstract class Agent implements Serializable, Runnable {
 
     protected String name;
     protected int xc;
@@ -44,23 +42,23 @@ public abstract class Agent implements Serializable, Runnable{
         return suspended;
     }
 
-    public synchronized void checkSuspended(){
+    public synchronized void checkSuspended() {
         try{
-            while(!stopped && suspended){
+            while(!stopped && suspended) {
                 wait();
                 suspended = false;
             }
-        } catch (InterruptedException e){
+        } catch (InterruptedException e) {
             Utilities.error(e);
         }
     }
 
-    public synchronized void join(){
+    public synchronized void join() {
         try{
-            if(myThread != null){
+            if(myThread != null) {
                 myThread.join();
             }
-        } catch(InterruptedException e){
+        } catch(InterruptedException e) {
             Utilities.error(e);
         }
     }
@@ -98,85 +96,52 @@ public abstract class Agent implements Serializable, Runnable{
 		switch(heading) {
 			case N:{
 				yc -= steps;
-				if( yc < 0) {
-					yc = 250 + yc;
-				}
-				world.changed();
+				if (yc < 0) { yc += 250; }
 				break;
 			}
 			case S:{
 				yc += steps;
-				if( yc > 250) {
-					yc = yc-250;
-				}
-				world.changed();
+				if (yc > 250) { yc -= 250; }
 				break;
 			}
 			case E: {
 				xc += steps;
-				if (xc > 250) {
-					xc = xc - 250;
-				}
-				world.changed();
+				if (xc > 250) { xc -= 250; }
 				break;
 			}
 			case W:{
 				xc -= steps;
-				if (xc < 0) {
-					xc = 250 + xc;
-				}
-				world.changed();
+				if (xc < 0) { xc += 250; }
 				break;
 			}
 			case NW:{
 				yc -= steps;
 				xc -= steps;
-				if( yc < 0) {
-					yc = 250 + yc;
-				}
-				if (xc < 0) {
-					xc = 250 + xc;
-				}
-				world.changed();
+				if (yc < 0) { yc += 250; }
+				if (xc < 0) { xc += 250; }
 				break;
 			}
 			case NE:{
 				yc -= steps;
 				xc += steps;
-				if( yc < 0) {
-					yc = 250 + yc;
-				}
-				if (xc > 250) {
-					xc = xc - 250;
-				}
-				world.changed();
+				if(yc < 0) { yc += 250; }
+				if (xc > 250) { xc -= 250; }
 				break;
 			}
 			case SW:{
 				yc += steps;
 				xc -= steps;
-				if( yc > 250) {
-					yc = yc-250;
-				}
-				if (xc < 0) {
-					xc = 250 + xc;
-				}
-				world.changed();
+				if (yc > 250) { yc -= 250; }
+				if (xc < 0) { xc += 250; }
 				break;
 			}
 			case SE:{
 				yc += steps;
 				xc += steps;
-				if( yc > 250) {
-					yc = yc-250;
-				}
-				if (xc > 250) {
-					xc = xc - 250;
-				}
-				world.changed();
+				if (yc > 250) { yc -= 250; }
+				if (xc > 250) { xc -= 250; }
 				break;
 			}
-				
 		}
 		world.changed();
 	}

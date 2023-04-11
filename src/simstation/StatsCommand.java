@@ -13,8 +13,7 @@ public class StatsCommand extends Command {
     public void execute() throws Exception {
         if (!(model instanceof Simulation)) {
 	        throw new Exception("Model must instantiate Simulation");
-	     }
-	     Simulation sim = (Simulation)model;
-	     sim.stats();
+        }
+        ((Simulation)model).stats();
     }
 }

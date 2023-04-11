@@ -19,9 +19,8 @@ public class SimulationView extends View {
     	
     	Simulation sim = (Simulation)model;
     	if(sim.agents != null) {
-	    	for(Agent a: sim.agents) 
-	    	{
-	    		a.draw((Graphics)gc);
+	    	for(Agent a: sim.agents) {
+	    		a.draw(gc);
 	    	}
     	}
     	

@@ -1,6 +1,6 @@
 package simstation;
 
-import java.util.Random;
+import mvc.Utilities;
 
 public enum Heading {
     N,
@@ -12,8 +12,6 @@ public enum Heading {
 	SE,
 	SW;
 
-	public static Heading random() {
-		return Heading.values()[new Random().nextInt(Heading.values().length)];
-	}
+	public static Heading random() { return Heading.values()[Utilities.rng.nextInt(Heading.values().length)]; }
 
 }
