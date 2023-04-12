@@ -14,7 +14,7 @@ public abstract class Agent implements Serializable, Runnable {
     protected Heading heading;
     protected boolean suspended = false;
     protected boolean stopped = false;
-    protected Thread myThread;
+    transient protected Thread myThread;
     protected Simulation world;
 
     public Agent(){

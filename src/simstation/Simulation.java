@@ -10,7 +10,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Simulation extends Model {
-    private Timer timer;
+    transient private Timer timer;
     protected List<Agent> agents;
     protected int clock;
 
