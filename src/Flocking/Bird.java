@@ -17,11 +17,8 @@ public class Bird extends Agent{
 		if(nb != null) {
 			this.speed = nb.speed;
 			this.heading = nb.heading;
-			super.move(speed);
-		} else {
-			super.move(speed);
 		}
-		
+        super.move(speed);
 	}
 
     public int getSpeed(){

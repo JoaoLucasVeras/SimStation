@@ -39,6 +39,6 @@ public class Body extends Agent {
     @Override
     public synchronized void draw (Graphics gc) {
         gc.setColor((infected) ? Color.RED : Color.GREEN);
-        gc.drawRect(xc, yc, 1, 1);
+        gc.drawRect(xc, yc, 2, 2);
     }
 }

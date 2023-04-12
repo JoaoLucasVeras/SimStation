@@ -147,7 +147,7 @@ public abstract class Agent implements Serializable, Runnable {
 	}
 
     public synchronized void draw (Graphics gc) {
-		gc.setColor(Color.blue);
-		gc.drawRect(xc, yc, 1, 1);
+		gc.setColor(Color.white);
+		gc.drawRect(xc, yc, 2, 2);
 	}
 }

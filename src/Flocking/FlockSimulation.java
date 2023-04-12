@@ -27,25 +27,18 @@ public class FlockSimulation extends Simulation {
 		for(  Agent a : agents) {
 			Bird b = (Bird) a;
 			int speed = b.getSpeed();
-			if(speed == 1) {
-				s1++;
-			} else if (speed == 2) {
-				s2++;
-			} else if (speed == 3) {
-				s3++;
-			} else if (speed == 4) {
-				s4++;
-			} else if (speed == 5) {
-				s5++;
-			}
-			
+			if(speed == 1) s1++;
+			else if (speed == 2) s2++;
+			else if (speed == 3) s3++;
+			else if (speed == 4) s4++;
+			else if (speed == 5) s5++;
 		}
 		Utilities.inform(new String[] {
-				"Birds at speed 1 = " + s1,
-				"Birds at speed 2 = " + s2,
-				"Birds at speed 3 = " + s3,
-				"Brids at speed 4 = " + s4,
-				"Brids at speed 5 = " + s5
+				"#birds @ speed 1 = " + s1,
+				"#birds @ speed 2 = " + s2,
+				"#birds @ speed 3 = " + s3,
+				"#birds @ speed 4 = " + s4,
+				"#birds @ speed 5 = " + s5
 		});
 	}
 }
