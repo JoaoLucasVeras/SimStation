@@ -36,6 +36,7 @@ public class Simulation extends Model {
     }
 
     public void start() {
+        for (Agent a: agents) a.stop();
         clock = 0;
         agents.clear();
         this.populate();
@@ -50,29 +51,15 @@ public class Simulation extends Model {
     public void stop() { stopTimer(); for (Agent a: agents) a.stop(); }
 
     public Agent getNeighbor(Agent a, double radius) {
-
         int rand = Utilities.rng.nextInt(agents.size());
-		for (int i = rand; i < agents.size(); i++) {
-			Agent temp = agents.get(i);
-			double xdif = Math.abs(a.getX()-temp.getX());
-			double ydif = Math.abs(a.getY()-temp.getY());
-			if (Math.hypot(xdif,ydif) <= radius) {
-				if(!temp.equals(a)) {
-					return temp;
-				}
-			}
+        for (int i=rand+1; i%agents.size()!=rand; i++) {
+			Agent temp = agents.get(i%agents.size());
+            if (temp.equals(a)) continue;
+			int xdif = a.getX()-temp.getX();
+			int ydif = a.getY()-temp.getY();
+			if (Math.abs(Math.hypot(xdif,ydif)) <= radius) return temp;
 		}
-		for ( int i = 0 ; i < rand ; i++) {
-			Agent temp = agents.get(i);
-			double xdif = Math.abs(a.getX()-temp.getX());
-			double ydif = Math.abs(a.getY()-temp.getY());
-			if (Math.hypot(xdif,ydif) <= radius) {
-				if(!temp.equals(a)) {
-					return temp;
-				}
-			}
-		}
-		return null;
+        return null;
     }
     public void populate() {}
 

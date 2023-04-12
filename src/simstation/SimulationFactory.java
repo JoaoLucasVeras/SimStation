@@ -42,7 +42,7 @@ public class SimulationFactory implements AppFactory {
         return new String[] {
             "Start : begins a new simulation",
             "Suspend : temporarily pause the simulation",
-            "Resume : continue the simlation",
+            "Resume : continue the simulation",
             "Stop : terminate the simulation",
             "Stats : get the statistics of the simulation"
     };
@@ -50,6 +50,6 @@ public class SimulationFactory implements AppFactory {
 
     @Override
     public String about() {
-        return "Simstation made by: Joao Lucas Veras, Nick Nguyen, Kyaw Soe Han ";
+        return "SimStation made by: Joao Lucas Veras, Nick Nguyen, Kyaw Soe Han ";
     }
 }
