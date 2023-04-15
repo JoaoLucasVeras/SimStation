@@ -10,4 +10,5 @@ public class PlagueFactory extends SimulationFactory {
     public String getTitle(){
         return "Plague Simulation";
     }
+    public String about() { return "Plague Simulation made by : Nick Nguyen"; }
 }

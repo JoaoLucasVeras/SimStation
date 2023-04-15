@@ -36,6 +36,8 @@ public class Body extends Agent {
     }
     public boolean isInfected() { return infected; }
 
+    public void forceInfected(boolean infect) { infected = infect; }
+
     @Override
     public synchronized void draw (Graphics gc) {
         gc.setColor((infected) ? Color.RED : Color.GREEN);

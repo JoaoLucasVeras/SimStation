@@ -92,7 +92,6 @@ public abstract class Agent implements Serializable, Runnable {
     public abstract void update();
     
     public synchronized void move(int steps) {
-	
 		switch(heading) {
 			case N:{
 				yc -= steps;

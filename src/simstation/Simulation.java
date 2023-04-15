@@ -20,8 +20,10 @@ public class Simulation extends Model {
     }
 
     private void startTimer() {
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new ClockUpdater(), 1000, 1000);
+        if (timer == null) {
+            timer = new Timer();
+            timer.scheduleAtFixedRate(new ClockUpdater(), 1000, 1000);
+        }
     }
 
     private class ClockUpdater extends TimerTask {
@@ -31,8 +33,10 @@ public class Simulation extends Model {
     }
 
     private void stopTimer() {
-        timer.cancel();
-        timer.purge();
+        if (timer != null) {
+            timer.cancel();
+            timer.purge();
+        }
     }
 
     public void start() {
@@ -41,14 +45,30 @@ public class Simulation extends Model {
         agents.clear();
         this.populate();
         startTimer();
+        makeThreads();
+    }
+
+    public void makeThreads() {
         for (Agent a:agents) {
             Thread thread = new Thread(a);
             thread.start();
         }
     }
-    public void suspend() { stopTimer(); for (Agent a: agents) a.suspend(); }
-    public void resume() { startTimer(); for (Agent a: agents) a.resume(); }
-    public void stop() { stopTimer(); for (Agent a: agents) a.stop(); }
+
+    public void suspend() {
+        stopTimer();
+        for (Agent a: agents) a.suspend();
+    }
+
+    public void resume() {
+        startTimer();
+        for (Agent a: agents) a.resume();
+    }
+
+    public void stop() {
+        stopTimer();
+        for (Agent a: agents) a.stop();
+    }
 
     public Agent getNeighbor(Agent a, double radius) {
         int rand = Utilities.rng.nextInt(agents.size());

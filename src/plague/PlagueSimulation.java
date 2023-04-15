@@ -14,6 +14,8 @@ public class PlagueSimulation extends Simulation {
         for(int i = 0 ; i < 40 ; i++){
             addAgent(new Body(VIRULENCE, RESISTANCE));
         }
+        Body b = (Body)agents.get(0);
+        b.forceInfected(true);
     }
 
     public void stats() {

@@ -14,4 +14,5 @@ public class PDFactory extends SimulationFactory{
 	{
 		return "Prisoner's Dilemma";
 	}
+	public String about() { return "Prisoner's Dilemma Simulation made by : Joao Lucas Veras"; }
 }

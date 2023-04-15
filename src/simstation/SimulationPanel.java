@@ -1,6 +1,7 @@
 package simstation;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -22,6 +23,15 @@ public class SimulationPanel extends AppPanel {
             JPanel p = new JPanel();
             p.add(b);
             controlPanel.add(p);
+        }
+    }
+
+    public void actionPerformed(ActionEvent ae) {
+        super.actionPerformed(ae);
+        if (ae.getActionCommand().equals("Open")) {
+            Simulation sim = (Simulation) model;
+            sim.makeThreads();
+            sim.suspend();
         }
     }
     

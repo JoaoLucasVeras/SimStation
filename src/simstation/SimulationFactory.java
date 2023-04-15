@@ -50,6 +50,6 @@ public class SimulationFactory implements AppFactory {
 
     @Override
     public String about() {
-        return "SimStation made by: Joao Lucas Veras, Nick Nguyen, Kyaw Soe Han ";
+        return "SimStation made by: Joao Lucas Veras, Nick Nguyen, Kyaw Soe Han";
     }
 }

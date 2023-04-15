@@ -13,8 +13,7 @@ class Prisoner extends Agent {
 	  private Strat stratType;
 	  Strategy strategy;
 	  
-	  public Prisoner(Strategy s, Strat strat) 
-	  {
+	  public Prisoner(Strategy s, Strat strat) {
 		  this.strategy = s;
 		  s.setPrisoner(this);
 		  this.stratType = strat;
@@ -41,69 +40,57 @@ class Prisoner extends Agent {
 	  
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		heading = Heading.random();
         int steps = Utilities.rng.nextInt(10) + 1;
         move(steps);
         
         Prisoner p = (Prisoner)world.getNeighbor(this, 8);
-        if(p != null) 
-        {
+        if(p != null) {
         	boolean p1 = this.strategy.cooperate();
         	boolean p2 = p.strategy.cooperate();
-        	if(p1 && p2) 
-        	{
+        	if(p1 && p2) {
         		this.updateFitness(3);
         		p.updateFitness(3);
         		
         		this.partnerCheated = false;
         		p.partnerCheated = false;
         	}
-        	else if(p1 && !p2) 
-        	{
+        	else if(p1) {
         		p.updateFitness(5);
         		this.partnerCheated = true;
-			p.partnerCheated = false;
+				p.partnerCheated = false;
         	}
-        	else if(!p1 && p2) 
-        	{
+        	else if(p2) {
         		this.updateFitness(5);
         		p.partnerCheated = true;
-			this.partnerCheated = false;
+				this.partnerCheated = false;
         	}
-        	else 
-        	{
+        	else {
         		this.updateFitness(1);
         		p.updateFitness(1);
         		this.partnerCheated = true;
         		p.partnerCheated = true;
         	}
-        	
         }
 	}
 	
 	@Override
-	public synchronized void draw(Graphics gc) 
-	{
-		switch(stratType)
-		{
-			case coop:
-			{
-				gc.setColor(Color.red);
+	public synchronized void draw(Graphics gc) {
+		switch(stratType) {
+			case coop: {
+				gc.setColor(Color.RED);
 				break;
 			}
-			case cheat:{
-				gc.setColor(Color.blue);
+			case cheat: {
+				gc.setColor(Color.BLUE);
 				break;
 			}
-			case rand:
-			{
-				gc.setColor(Color.green);
+			case rand: {
+				gc.setColor(Color.GREEN);
 				break;
 			}
-			case titTat:
-			{
-				gc.setColor(Color.pink);
+			case titTat: {
+				gc.setColor(Color.PINK);
 				break;
 			}
 		}
