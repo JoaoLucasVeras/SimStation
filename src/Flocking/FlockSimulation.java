@@ -8,7 +8,7 @@ import simstation.SimulationPanel;
 
 public class FlockSimulation extends Simulation {
     public void populate(){
-        for(int i = 0 ; i < 20 ; i++){
+        for(int i = 0 ; i < 40 ; i++){
             addAgent(new Bird());
         }
     }
