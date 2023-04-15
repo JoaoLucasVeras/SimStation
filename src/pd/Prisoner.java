@@ -63,11 +63,13 @@ class Prisoner extends Agent {
         	{
         		p.updateFitness(5);
         		this.partnerCheated = true;
+			p.partnerCheated = false;
         	}
         	else if(!p1 && p2) 
         	{
         		this.updateFitness(5);
         		p.partnerCheated = true;
+			this.partnerCheated = false;
         	}
         	else 
         	{
