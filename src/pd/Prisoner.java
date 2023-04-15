@@ -10,13 +10,14 @@ import simstation.Heading;
 class Prisoner extends Agent {
 	  private int fitness = 0;
 	  private boolean partnerCheated = false;
-	  private int stratType = 0;
+	  private Strat stratType;
 	  Strategy strategy;
 	  
-	  public Prisoner(Strategy s) 
+	  public Prisoner(Strategy s, Strat strat) 
 	  {
 		  this.strategy = s;
 		  s.setPrisoner(this);
+		  this.stratType = strat;
 	  }
 	  public boolean cooperate() 
 	  {
@@ -33,14 +34,11 @@ class Prisoner extends Agent {
 		  return fitness;
 	  }
 	  
-	  public int getStrat() 
+	  public Strat getStrat() 
 	  {
 		  return stratType;
 	  }
-	  public void setStrat(int num)
-	  {
-		  stratType = num;
-	  }
+	  
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
@@ -85,10 +83,28 @@ class Prisoner extends Agent {
 	@Override
 	public synchronized void draw(Graphics gc) 
 	{
-		if(stratType == 1) {gc.setColor(Color.red);}
-		if(stratType == 2) {gc.setColor(Color.blue);}
-		if(stratType == 3) {gc.setColor(Color.green);}
-		if(stratType == 4) {gc.setColor(Color.pink);}
+		switch(stratType)
+		{
+			case coop:
+			{
+				gc.setColor(Color.red);
+				break;
+			}
+			case cheat:{
+				gc.setColor(Color.blue);
+				break;
+			}
+			case rand:
+			{
+				gc.setColor(Color.green);
+				break;
+			}
+			case titTat:
+			{
+				gc.setColor(Color.pink);
+				break;
+			}
+		}
 		gc.drawRect(xc, yc, 2, 2);
 	}
 }

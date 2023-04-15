@@ -1,9 +1,12 @@
 package pd;
 
+import java.io.Serializable;
+
 import mvc.Utilities;
 
-abstract class Strategy{
+abstract class Strategy implements Serializable{
 	Prisoner p;
+	Strat s;
 	abstract boolean cooperate();
 	void setPrisoner (Prisoner p) 
 	{
@@ -13,7 +16,6 @@ abstract class Strategy{
 
 class Cooperate extends Strategy
 {
-	
 	@Override
 	boolean cooperate() {
 		// TODO Auto-generated method stub
@@ -28,6 +30,7 @@ class RandomlyCooperate extends Strategy
 	boolean cooperate() {
 		// TODO Auto-generated method stub
 		int rnd = Utilities.rng.nextInt(2);
+		
 		if(rnd == 0) 
 		{
 			return true;
@@ -39,7 +42,6 @@ class RandomlyCooperate extends Strategy
 
 class Cheat extends Strategy
 {
-
 	@Override
 	boolean cooperate() {
 		// TODO Auto-generated method stub
@@ -50,15 +52,14 @@ class Cheat extends Strategy
 
 class TitTat extends Strategy
 {
-
 	@Override
 	boolean cooperate() {
 		// TODO Auto-generated method stub
 		if(p.cooperate()) 
 		{
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 }

@@ -12,6 +12,6 @@ public class PDFactory extends SimulationFactory{
 	
 	public String getTitle() 
 	{
-		return "Prisoner's Dilema";
+		return "Prisoner's Dilemma";
 	}
 }
