@@ -34,6 +34,8 @@ public class FlockSimulation extends Simulation {
 			else if (speed == 5) s5++;
 		}
 		Utilities.inform(new String[] {
+				"#agents = " + agents.size(),
+                "clock = " + clock,
 				"#birds @ speed 1 = " + s1,
 				"#birds @ speed 2 = " + s2,
 				"#birds @ speed 3 = " + s3,
